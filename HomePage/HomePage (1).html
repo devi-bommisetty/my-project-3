@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Internship Project-1</title>
+<link rel="stylesheet" href="./HomePage.css"> 
+</head>
+<body>
+  <div class="container">
+
+    <div id="login" class="form-container">
+        <br>
+      <h1>Login</h1>
+      <br>
+      <form name="loginPage"> 
+        <label for="LoginEmail" class="Label">Email</label>
+        <input type="email" class="words" id="Loginemail" placeholder="Enter Email" name="LoginEmail" required autofocus/>
+        <br>
+        <label for="LoginPassword" class="Label">Password:</label>
+        <input type="password" class="words" id="Loginpassword" placeholder="Enter Password" name="Loginpassword" required/>
+        <br>
+        <button class="submitButton" type="submit" onclick="LoginFuction()">Login</button>
+      </form>
+      <br>
+      <h3>Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></h3>
+      <br>
+    </div>
+
+    <div id="signup" class="form-container" style="display: none;">
+      <br>
+        <h1>Signup</h1>
+        <br>
+      <form name="SignUpPage"> 
+        <label for="name" class="Label">Full Name:</label>
+        <input type="text" class="words" id="Signupname" name="Signupname" placeholder="Enter Name" required autofocus/>
+        <br>
+        <label for="signupEmail" class="Label">Email:</label>
+        <input type="email" class="words" id="signupEmail" name="signupEmailN" placeholder="Enter Email" required />
+        <br>
+        <label for="signUppassword" class="Label">Password:</label>
+        <input type="password" class="words" placeholder="Enter Password" id="signUppassword" name="SignUpPassword" required/>
+        <br>
+        <label for="Conformpassword" class="Label">Conformpassword:</label>
+        <input type="password" class="words" placeholder="Re-Enter password" id="Conformpassword" name="Conformpassword" required/>
+        <br>
+        <button type="submit" class="submitButton" onclick="SignupFuction()">Sign Up</button>
+      </form>
+    <br>
+      <h3>Already have an account? <a href="#" onclick="showLogin()">Login</a></h3>
+    <br>
+    </div>
+
+  </div>
+
+  <script>
+    function showLogin() {
+     let login = document.getElementById("login").style.display = "block";
+     document.getElementById("signup").style.display = "none";
+    }
+
+    function showSignup() {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("signup").style.display = "block";
+    }
+
+
+function LoginFuction() {
+  event.preventDefault();
+  const userEmail = document.getElementById("Loginemail").value;
+  const password = document.getElementById("Loginpassword").value;
+  if (userEmail.trim() === "" || password.trim() === "") {
+    alert("Please fill in all fields.");
+    return;
+  }
+  if(password.length < 8){
+    alert("Entered correct Password");
+    return;
+  }
+  const userNameBeforeAt = userEmail.split("@")[0];
+    alert("logged In successfull "+ userNameBeforeAt);
+}
+
+function SignupFuction() {
+  event.preventDefault();
+    
+  const userName = document.getElementById("Signupname").value;
+  const Email = document.getElementById("signupEmail").value;
+  const password1 = document.getElementById("signUppassword").value;
+  const password2 = document.getElementById("Conformpassword").value;
+  if (userName.trim() === "" || password1.trim() === "" || password2.trim() === "" || Email.trim() === ""){
+    alert("Please fill in all fields.");
+    return;
+  }
+  if (password1 !== password2) {
+    alert("Passwords do not match. Please try again.");
+    return;
+  }
+  if(password1.length < 8){
+    alert("Password Must contains 8 or more letters");
+    return;
+  }
+    alert("Thanks for Registering "+userName);
+}
+
+  </script>
+</body>
+</html>
